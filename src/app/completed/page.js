@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
-import { TaskContext } from "../context/TaskContext";
-import TaskCard from "../components/TaskCard";
+import { TaskContext } from "../../context/TaskContext";
+import TaskCard from "../../components/TaskCard";
 import Link from "next/link";
 
 export default function Completed() {
@@ -10,6 +10,7 @@ export default function Completed() {
   return (
     <main className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Completed Tasks</h1>
+
       <Link href="/" className="text-blue-600 hover:underline mb-4 block">
         View Active Tasks
       </Link>

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { TaskProvider } from "../context/TaskContext";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,10 +20,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html>
-      <body>
+    <html lang="en">
+      <body className="flex h-screen bg-gray-50 text-gray-900 font-sans">
         <TaskProvider>
-          {children}
+          <aside className="w-64 bg-gray-900 text-white p-4 space-y-4">
+            <h2 className="text-xl font-bold">Kappa Tracker</h2>
+            <nav className="flex flex-col space-y-2">
+              <Link href="/" className="hover:underline">Active Tasks</Link>
+              <Link href="/completed" className="hover:underline">Completed Tasks</Link>
+            </nav>
+          </aside>
+          <main className="flex-1 bg-gray overflow-y-auto">
+            {children}
+          </main>
         </TaskProvider>
       </body>
     </html>
