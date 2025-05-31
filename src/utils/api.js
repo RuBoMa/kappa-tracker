@@ -1,6 +1,6 @@
 export async function fetchTasks() {
   const query = `
-     query {
+  query {
   tasks {
     id
     name
@@ -25,6 +25,7 @@ export async function fetchTasks() {
       trader {
         id
         name
+        
       }
     }
 
@@ -32,8 +33,34 @@ export async function fetchTasks() {
     lightkeeperRequired
     successMessageId
     failMessageId
+
+    objectives {
+      id
+      type
+      description
+
+      ... on TaskObjectiveBuildItem {
+        optional
+        item {
+          name
+          id
+          image8xLink
+        }
+        containsAll {
+          name
+        }
+        containsCategory {
+          name
+        }
+        attributes {
+          name
+          
+        }
+      }
+    }
   }
-}`;
+}
+`;
 
   const res = await fetch("https://api.tarkov.dev/graphql", {
     method: "POST",
